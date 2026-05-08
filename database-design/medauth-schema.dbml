@@ -1,0 +1,155 @@
+Table Account {
+  Account_ID int [pk]
+  Username varchar
+  Email varchar
+  Password varchar
+  Registration_date datetime
+  Account_status varchar
+  Role_ID int [ref: > Role.Role_ID]
+}
+
+Table Role {
+  Role_ID int [pk]
+  Role_Name varchar
+}
+
+Table Pharmacist {
+  Pharmacist_ID int [pk]
+  Name varchar
+  License_NO varchar
+  Account_ID int [ref: > Account.Account_ID]
+}
+
+Table HealthcareWorker {
+  Worker_ID int [pk]
+  Name varchar
+  Position varchar
+  Contact varchar
+  Facility_name varchar
+  Account_ID int [ref: > Account.Account_ID]
+}
+
+Table Consumer {
+  Consumer_ID int [pk]
+  Name varchar
+  Contact varchar
+  Account_ID int [ref: > Account.Account_ID]
+}
+
+Table Region {
+  Region_ID int [pk]
+  Name varchar
+  Country varchar
+}
+
+Table Regulatory_Agent {
+  Agent_ID int [pk]
+  Name varchar
+  Contact varchar
+  Account_ID int [ref: > Account.Account_ID]
+  Region_ID int [ref: > Region.Region_ID]
+}
+
+Table Regulatory_Report {
+  RegulatoryReport_ID int [pk]
+  Report_time datetime
+  Summary text
+  Attached_data text
+  Agent_ID int [ref: > Regulatory_Agent.Agent_ID]
+}
+
+Table Device {
+  Device_ID int [pk]
+  Device_type varchar
+  Serial_number varchar
+  Account_ID int [ref: > Account.Account_ID]
+}
+
+Table Device_Assignment {
+  Assignment_ID int [pk]
+  Date datetime
+  Account_ID int [ref: > Account.Account_ID]
+  Device_ID int [ref: > Device.Device_ID]
+}
+
+Table Authentication_Log {
+  Auth_ID int [pk]
+  Auth_time datetime
+  Auth_method varchar
+  Status varchar
+  Account_ID int [ref: > Account.Account_ID]
+}
+
+Table Notification {
+  Notification_ID int [pk]
+  Message text
+  Sent_time datetime
+  Type varchar
+  Account_ID int [ref: > Account.Account_ID]
+}
+
+Table Authentication_Algorithm {
+  Algorithm_ID int [pk]
+  Version varchar
+  Hash_method varchar
+  Description text
+}
+
+Table Scan_Record {
+  Scan_ID int [pk]
+  Scan_time datetime
+  Scan_location varchar
+  Scan_result varchar
+  Account_ID int [ref: > Account.Account_ID]
+  Batch_ID int [ref: > Medication_Batch.Batch_ID]
+  Device_ID int [ref: > Device.Device_ID]
+  Algorithm_ID int [ref: > Authentication_Algorithm.Algorithm_ID]
+}
+
+Table ScanReport_Mapping {
+  Mapping_ID int [pk]
+  Report_ID int [ref: > Regulatory_Report.RegulatoryReport_ID]
+  Scan_ID int [ref: > Scan_Record.Scan_ID]
+}
+
+Table Medication_Batch {
+  Batch_ID int [pk]
+  Batch_number varchar
+  Manufacture_date date
+  Expiry_date date
+  Batch_status varchar
+  Medication_ID int [ref: > Medication.Medication_ID]
+}
+
+Table Medication {
+  Medication_ID int [pk]
+  Name varchar
+  Approval_code varchar
+  Dosage_form varchar
+  Company_ID int [ref: > Pharmaceutical_Company.Company_ID]
+}
+
+Table Pharmaceutical_Company {
+  Company_ID int [pk]
+  Name varchar
+  License_NO varchar
+  Contact varchar
+  Region_ID int [ref: > Region.Region_ID]
+}
+
+Table Flag_Report {
+  FlagReport_ID int [pk]
+  Report_time datetime
+  Reason text
+  Status varchar
+  Agent_ID int [ref: > Regulatory_Agent.Agent_ID]
+  Batch_ID int [ref: > Medication_Batch.Batch_ID]
+}
+
+Table Medical_Device {
+  MedicalDevice_ID int [pk]
+  Device_type varchar
+  Serial_number varchar
+  Medication_ID int [ref: > Medication.Medication_ID]
+}
+
