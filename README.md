@@ -1,10 +1,10 @@
 # MedAuth Healthcare Verification System
 
 ## Project Overview
-MedAuth is a healthcare system analysis project designed to address the issue of counterfeit medicine. The proposed system allows consumers, pharmacists and regulators to verify medicine authenticity through barcode scanning, blockchain-backed verification records and role-based access.
+MedAuth is a healthcare system analysis project designed to address the issue of counterfeit medicine. The proposed system allows consumers, pharmacists and regulators to verify medicine authenticity through barcode scanning, blockchain traceability records and role-based access.
 
 ## Business Problem
-Counterfeit medicines create serious risks for patient safety, healthcare trust and supply chain transparency. Many consumers struggle to identify whether a medicine is genuine, especially in low-connectivity or low-literacy environments.
+Counterfeit medicines create serious risks for patient safety, healthcare trust and supply chain transparency. Many consumers struggle to identify whether a medicine is genuine, especially in low connectivity or low literacy environments.
 
 ## Proposed Solution
 The proposed MedAuth system provides a digital verification platform where users can scan medicine barcodes and receive clear authenticity results. The system also supports medicine history, safety alerts, offline scan mode and professional verification features for pharmacists and regulators.
@@ -43,3 +43,10 @@ I contributed as a Business and Systems Analyst by analysing the problem, identi
 
 ## Project Outcome
 This project demonstrates how business analysis and digital technology can be combined to design a safer medicine verification system that supports consumers, healthcare workers and regulators.
+
+## Repository Structure
+- diagrams
+- database-design
+- use-case-documentation
+- figma-screenshots
+  
